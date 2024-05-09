@@ -4,8 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c133b312fe180afc0f2b635022ad80ac",
+    "content-hash": "bf80f0ca6672ace001d9226697a45f5e",
     "packages": [
+        {
+            "name": "baizidmdashadzzaman/developer",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Baizidmdashadzzaman/developer-package.git",
+                "reference": "f0e1ca16ced9633fef2b7542ac51eecc3abc8c80"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Baizidmdashadzzaman/developer-package/zipball/f0e1ca16ced9633fef2b7542ac51eecc3abc8c80",
+                "reference": "f0e1ca16ced9633fef2b7542ac51eecc3abc8c80",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Baizidmdashadzzaman\\Developer\\DeveloperServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Baizidmdashadzzaman\\Developer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Baizidmdashadzzaman",
+                    "email": "baizid.md.ashadzzaman@gmail.com"
+                }
+            ],
+            "description": "I'm Baizid MD Ashadzzaman, a passionate and versatile software engineer with a strong foundation in Computer Science and Engineering. This package's purpose is to integrate my information in a website that I have built using laravel.",
+            "support": {
+                "issues": "https://github.com/Baizidmdashadzzaman/developer-package/issues",
+                "source": "https://github.com/Baizidmdashadzzaman/developer-package/tree/v1.0.2"
+            },
+            "time": "2024-02-18T08:06:09+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.12.1",

@@ -12,7 +12,15 @@
     },
     "dependencies": {
         "@vitejs/plugin-vue": "^5.0.4",
+        "@vueup/vue-quill": "^1.2.0",
+        "laravel-vue-pagination": "^4.1.3",
         "vue": "^3.4.26",
-        "vue-loader": "^17.4.2"
+        "vue-loader": "^17.4.2",
+        "vue-router": "^4.3.2",
+        "vue-sweetalert2": "^5.0.5",
+        "vue3-perfect-scrollbar": "^2.0.0",
+        "vue3-toastify": "^0.2.1",
+        "vuex": "^4.1.0",
+        "vuex-persistedstate": "^4.1.0"
     }
 }
