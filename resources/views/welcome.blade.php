@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{asset('resources/template-backend/assets/vendor/libs/apex-charts/apex-charts.css')}}" />
     <script src="{{asset('resources/template-backend/assets/vendor/js/helpers.js')}}"></script>
     <script src="{{asset('resources/template-backend/assets/js/config.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('resources/template-backend/assets/vendor/css/pages/page-auth.css')}}">
 
     @vite('resources/css/app.css')
 

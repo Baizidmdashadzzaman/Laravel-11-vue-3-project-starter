@@ -41,96 +41,92 @@ import {
 </script>
 
 <template>
-    <div class="authentication-wrapper authentication-cover authentication-bg">
-      <div class="authentication-inner row">
-        <div class="d-none d-lg-flex col-lg-7 p-0">
-          <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center ">
-            <div class="image-container-cus">
-            <img
-              :src="$backendurl+'/resources/setting/'+setting_admin?.logo_backend"
-              alt="auth-login-cover"
-              class="img-fluid my-5 auth-illustration"
-              style="width:300px;mix-blend-mode:multiply;height: auto;"
-            />
-            </div>
 
-            <img
-              :src="$frontendurl+'/assets/img/illustrations/bg-shape-image-light.png'"
-              alt="auth-login-cover"
-              class="platform-bg"
-            />
+<div class="container-xxl">
+  <div class="authentication-wrapper authentication-basic container-p-y">
+    <div class="authentication-inner">
+      <!-- Register -->
+      <div class="card">
+        <div class="card-body">
+          <!-- Logo -->
+          <div class="app-brand justify-content-center">
+            <a href="#" class="app-brand-link gap-2">
+              <span class="app-brand-logo demo">
+                <!-- <img
+                  :src="$backendurl+'/resources/setting/'+setting_admin?.logo_backend"
+                  style="width:300px;mix-blend-mode:multiply;height: auto;"
+                /> -->
+              </span>
+              <span class="app-brand-text demo text-body fw-bold">{{ setting_admin?.site_name }}</span>
+            </a>
           </div>
+          <!-- /Logo -->
+          <h4 class="mb-2">Welcome to {{ setting_admin?.site_name }} 👋</h4>
+          <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-        </div>
-
-        <!-- {{ store.getters["auth/authenticated"] }} -->
-        <div class="d-flex col-12 col-lg-5 align-items-center p-sm-5 p-4">
-          <div class="w-px-400 mx-auto">
-            <h4 class="mb-1">Welcome to {{ setting_admin?.site_name }}</h4>
-            <p class="mb-4">Please enter your information to sign in</p>
-
-            <div class="col-12" v-if="Object.keys(validationErrors).length > 0">
-                <div class="alert alert-success">
-                    <ul class="mb-0" style="font-family: 'Nunito';">
+          <div class="col-12" v-if="Object.keys(validationErrors).length > 0">
+                <div class="alert alert-primary">
+                    <ul class="mb-0" >
                         <li v-for="(value, key) in validationErrors" :key="key">{{ value[0] }}</li>
                     </ul>
                 </div>
-            </div>
-
-            <form action="javascript:void(0)" class="mb-3" method="POST">
-              <div class="mb-3">
-                <label for="email" class="form-label">Email or username</label>
-                <input
+          </div>
+          <form action="javascript:void(0)" class="mb-3" method="POST" >
+            <div class="mb-3">
+              <label for="email" class="form-label">Email or Username</label>
+              <input
                   type="text"
                   v-model="auth.email"
                   name="email"
                   class="form-control"
                   placeholder="Enter your data"
                   autofocus />
+            </div>
+            <div class="mb-3 form-password-toggle">
+              <div class="d-flex justify-content-between">
+                <label class="form-label" for="password">Password</label>
+                <a href="#">
+                  <small>Forgot Password?</small>
+                </a>
               </div>
-              <div class="mb-3 form-password-toggle">
-                <div class="d-flex justify-content-between">
-                  <label class="form-label" for="password">Password</label>
-                  <a href="#">
-                    <small>Forget your password?</small>
-                  </a>
-                </div>
-                <div class="input-group input-group-merge">
-                  <input
+              <div class="input-group input-group-merge">
+                <input
                     type="password"
                     v-model="auth.password"
                     class="form-control"
                     name="password"
                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                     aria-describedby="password" />
-                  <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
-                </div>
+                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
               </div>
-              <button :disabled="processing" @click="login" class="btn btn-success d-grid w-100">
+            </div>
+            <div class="mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="remember-me">
+                <label class="form-check-label" for="remember-me">
+                  Remember Me
+                </label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <button :disabled="processing" @click="login" class="btn btn-primary d-grid w-100" type="submit">
                 {{ processing ? "Please wait" : "Sign in" }}
               </button>
-            </form>
-
-            <p class="text-center">
-              <span>Dont have an account ? </span>
-              <a href="#">
-                <span> Create account</span>
-              </a>
-            </p>
-
-            <div class="divider my-4">
-              <div class="divider-text">Developer by</div>
             </div>
+          </form>
 
-            <div class="justify-content-center">
-                <center>
-                   <img :src="$frontendurl+'/logo-developer2.png'" style="width: 150px;">
-                </center>
-            </div>
-          </div>
+          <p class="text-center">
+            <span>New on our platform?</span>
+            <a href="#">
+              <span>Create an account</span>
+            </a>
+          </p>
         </div>
       </div>
+      <!-- /Register -->
     </div>
+  </div>
+</div>
 
 </template>
 

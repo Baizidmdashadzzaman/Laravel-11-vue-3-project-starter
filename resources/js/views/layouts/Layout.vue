@@ -26,7 +26,7 @@ const backendurl = import.meta.env.VITE_BACKEND_URL;
     checkauth();
     setTimeout(() => {
       user.value = userinfo;
-      setuplanguage();
+    //   setuplanguage();
     }, 3000);
   });
 
@@ -40,7 +40,7 @@ const backendurl = import.meta.env.VITE_BACKEND_URL;
 
   watch(router, async (newdata, olddata) => {
     await checkauth();
-    openCloseMobileMenu();
+    // openCloseMobileMenu();
 
     console.log('h');
   });
@@ -48,7 +48,7 @@ const backendurl = import.meta.env.VITE_BACKEND_URL;
   watch(route, (newValue, oldValue) => {
     console.log('h');
     checkauth();
-    openCloseMobileMenu();
+    // openCloseMobileMenu();
   });
 
 watch(() => router.currentRoute.value, (to, from) => {
