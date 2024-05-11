@@ -6,24 +6,24 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Validator;
-use App\Repositories\Setting\Interfaces\SettingRepositoryInterface;
+use App\Repositories\Setting\SettingInterface;
 use Illuminate\Validation\Rule;
 
 use App\Models\Setting;
 
 class SettingController extends Controller
 {
-    protected $SettingRepository;
+    protected $SettingInterface;
 
-    public function __construct(SettingRepositoryInterface $SettingRepository)
+    public function __construct(SettingInterface $SettingInterface)
     {
-        $this->SettingRepository = $SettingRepository;
+        $this->SettingInterface = $SettingInterface;
     }
 
 
     public function setting(): JsonResponse
     {
-        $alldata = $this->SettingRepository->setting();
+        $alldata = $this->SettingInterface->setting();
         $response = [
             'status' => true,
             'alldata' => $alldata,
@@ -47,7 +47,7 @@ class SettingController extends Controller
             return response()->json($response, 400);
         }
 
-        $save = $this->SettingRepository->updatedata($request);
+        $save = $this->SettingInterface->updatedata($request);
 
         if($save){
             $statuscode = 200;

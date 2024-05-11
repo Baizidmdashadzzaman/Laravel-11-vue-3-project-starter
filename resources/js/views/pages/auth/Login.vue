@@ -52,10 +52,10 @@ import {
           <div class="app-brand justify-content-center">
             <a href="#" class="app-brand-link gap-2">
               <span class="app-brand-logo demo">
-                <!-- <img
+                <img
                   :src="$backendurl+'/resources/setting/'+setting_admin?.logo_backend"
-                  style="width:300px;mix-blend-mode:multiply;height: auto;"
-                /> -->
+                  style="width:40px;mix-blend-mode:multiply;height: auto;"
+                />
               </span>
               <span class="app-brand-text demo text-body fw-bold">{{ setting_admin?.site_name }}</span>
             </a>
@@ -121,6 +121,11 @@ import {
               <span>Create an account</span>
             </a>
           </p>
+          <!-- <div class="justify-content-center">
+                <center>
+                   <img :src="$frontendurl+'/logo-developer2.png'" style="width: 150px;">
+                </center>
+          </div> -->
         </div>
       </div>
       <!-- /Register -->

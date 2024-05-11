@@ -4,6 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use App\Repositories\{
+    Setting\SettingInterface,Setting\SettingRepository,
+};
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -11,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(SettingInterface::class,SettingRepository::class);
     }
 
     /**

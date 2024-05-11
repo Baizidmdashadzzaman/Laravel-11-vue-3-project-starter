@@ -178,10 +178,10 @@ const onfaviconChange = (e) => {
          </div>
          <hr/>
          <div class="pt-4">
-            <button type="submit" class="btn btn-success me-sm-3 me-1 waves-effect waves-light">
+            <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">
                {{ loadingBtn ? "Please wait" : "Update" }}
             </button>
-            <button type="reset" class="btn btn-label-secondary waves-effect">Reset</button>
+            <button type="reset" class="btn btn-secondary waves-effect">Reset</button>
          </div>
       </form>
       <LoadingDiv v-if="loading" />

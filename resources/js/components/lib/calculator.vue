@@ -2,25 +2,25 @@
   <div >
     <div class="calculator">
       <div class="btn display text-right" style="justify-content: right;">৳ <font style="font-family: 'Nunito';font-size: 35px;">{{current || '0'}}</font></div>
-      <div @click="clear" class="btn btn-success border " style="font-family: 'Nunito';">C</div>
-      <div @click="sign" class="btn btn-label-success border" style="font-family: 'Nunito';">+/-</div>
-      <div @click="percent" class="btn btn-label-success border " style="font-family: 'Nunito';">%</div>
-      <div @click="divide" class="btn btn-success border" style="font-family: 'Nunito';">÷</div>
-      <div @click="append('7')" class="btn btn-label-success border">7</div>
-      <div @click="append('8')" class="btn btn-label-success border">8</div>
-      <div @click="append('9')" class="btn btn-label-success border">9</div>
-      <div @click="times" class="btn btn-success border" style="font-family: 'Nunito';">x</div>
-      <div @click="append('4')" class="btn btn-label-success border">4</div>
-      <div @click="append('5')" class="btn btn-label-success border">5</div>
-      <div @click="append('6')" class="btn btn-label-success border">6</div>
-      <div @click="minus" class="btn btn-success border" style="font-family: 'Nunito';">-</div>
-      <div @click="append('1')" class="btn btn-label-success border">1</div>
-      <div @click="append('2')" class="btn btn-label-success border">2</div>
-      <div @click="append('3')" class="btn btn-label-success border">3</div>
-      <div @click="add" class="btn btn-success border" style="font-family: 'Nunito';">+</div>
-      <div @click="append('0')" class="btn btn-label-success border zero">0</div>
-      <div @click="dot" class="btn btn-label-success border" style="font-family: 'Nunito';">.</div>
-      <div @click="equal" class="btn btn-success border" style="font-family: 'Nunito';">=</div>
+      <div @click="clear" class="btn btn-primary border " style="font-family: 'Nunito';">C</div>
+      <div @click="sign" class="btn btn-label-primary border" style="font-family: 'Nunito';">+/-</div>
+      <div @click="percent" class="btn btn-label-primary border " style="font-family: 'Nunito';">%</div>
+      <div @click="divide" class="btn btn-primary border" style="font-family: 'Nunito';">÷</div>
+      <div @click="append('7')" class="btn btn-label-primary border">7</div>
+      <div @click="append('8')" class="btn btn-label-primary border">8</div>
+      <div @click="append('9')" class="btn btn-label-primary border">9</div>
+      <div @click="times" class="btn btn-primary border" style="font-family: 'Nunito';">x</div>
+      <div @click="append('4')" class="btn btn-label-primary border">4</div>
+      <div @click="append('5')" class="btn btn-label-primary border">5</div>
+      <div @click="append('6')" class="btn btn-label-primary border">6</div>
+      <div @click="minus" class="btn btn-primary border" style="font-family: 'Nunito';">-</div>
+      <div @click="append('1')" class="btn btn-label-primary border">1</div>
+      <div @click="append('2')" class="btn btn-label-primary border">2</div>
+      <div @click="append('3')" class="btn btn-label-primary border">3</div>
+      <div @click="add" class="btn btn-primary border" style="font-family: 'Nunito';">+</div>
+      <div @click="append('0')" class="btn btn-label-primary border zero">0</div>
+      <div @click="dot" class="btn btn-label-primary border" style="font-family: 'Nunito';">.</div>
+      <div @click="equal" class="btn btn-primary border" style="font-family: 'Nunito';">=</div>
     </div>
   </div>
 </template>

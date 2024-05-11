@@ -77,9 +77,9 @@ watch(() => router.currentRoute.value, (to, from) => {
           <div class="app-brand demo">
             <RouterLink :to="{name:'admin.dashboard'}" class="app-brand-link">
               <span class="">
-                <img :src="$backendurl+'/resources/setting/'+setting_admin?.logo_backend" style="width: 35px;"/>
+                <img :src="$backendurl+'/resources/setting/'+setting_admin?.logo_backend" style="width: 30px;"/>
               </span>
-              <span class="app-brand-text demo menu-text fw-bold" style="font-size: 18px;">
+              <span class="app-brand-text demo menu-text fw-bold" style="font-size: 18px;padding-left: 10px;">
                 <!-- &nbsp;&nbsp;&nbsp; -->
                 {{ setting_admin?.site_name }}
               </span>
@@ -98,22 +98,22 @@ watch(() => router.currentRoute.value, (to, from) => {
 
             <li :class="activemenu == 'Dashboard' ? ('menu-item active'):('menu-item')">
               <RouterLink :to="{name:'admin.dashboard'}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-device-laptop"></i>
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboard">Dashboard</div>
               </RouterLink>
             </li>
             <li :class="activemenu == 'setting' ? ('menu-item active'):('menu-item')">
               <RouterLink :to="{name:'admin.setting'}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-table-options"></i>
+                <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div data-i18n="Setting">Setting</div>
               </RouterLink>
             </li>
 
             <li :class="isOpen1?('menu-item open'):('menu-item')" >
               <a  @click="toggleMenu('isOpen1')" href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-settings"></i>
+                <i class="menu-icon tf-icons bx bx-slider-alt"></i>
                 <div data-i18n="System">System</div>
-                <div class="badge bg-success rounded-pill ms-auto">3</div>
+                <div class="badge bg-primary rounded-pill ms-auto">3</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item ">
@@ -135,7 +135,7 @@ watch(() => router.currentRoute.value, (to, from) => {
             </li>
             <li :class="activemenu == 'aztoken' ? ('menu-item active'):('menu-item')">
               <RouterLink :to="{name:'admin.aztoken.list'}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-key"></i>
+                <i class="menu-icon tf-icons bx bx-key"></i>
                 <div data-i18n="Access token">Access token</div>
               </RouterLink>
             </li>
@@ -145,9 +145,9 @@ watch(() => router.currentRoute.value, (to, from) => {
             </li>
             <li :class="isOpen2?('menu-item open'):('menu-item')">
               <a @click="toggleMenu('isOpen2')" href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-layers-union"></i>
+                <i class="menu-icon tf-icons bx bx-info-circle"></i>
                 <div data-i18n="Basic information">Basic info</div>
-                <div class="badge bg-success rounded-pill ms-auto">13</div>
+                <div class="badge bg-primary rounded-pill ms-auto">13</div>
               </a>
               <ul class="menu-sub">
                 <li :class="activemenu == 'category' ? ('menu-item active'):('menu-item')">
@@ -235,7 +235,7 @@ watch(() => router.currentRoute.value, (to, from) => {
               <a @click="toggleMenu('isOpen3')" href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-layers-union"></i>
                 <div data-i18n="Product info">Product info</div>
-                <div class="badge bg-success rounded-pill ms-auto">1</div>
+                <div class="badge bg-primary rounded-pill ms-auto">1</div>
               </a>
               <ul class="menu-sub">
                 <li :class="activemenu == 'product' ? ('menu-item active'):('menu-item')">
@@ -322,7 +322,7 @@ watch(() => router.currentRoute.value, (to, from) => {
             </li>
             <li class="menu-item">
               <a @click="logout" href="javascript:void(0);" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-logout"></i>
+                <i class="menu-icon tf-icons bx bx-log-in-circle"></i>
                 <div data-i18n="Logout">Logout</div>
               </a>
             </li>
@@ -380,7 +380,7 @@ watch(() => router.currentRoute.value, (to, from) => {
                     data-bs-toggle="dropdown"
                     data-bs-auto-close="outside"
                     aria-expanded="false">
-                    <i class="ti ti-layout-grid-add ti-md"></i>
+                    <i class="bx bx-list-ul ti-md"></i>
                   </a>
                   <div v-if="dpOpen2" class="dropdown-menu dropdown-menu-end py-0 show" data-bs-popper="static">
                     <div class="dropdown-menu-header border-bottom">
@@ -425,8 +425,8 @@ watch(() => router.currentRoute.value, (to, from) => {
                     data-bs-toggle="dropdown"
                     data-bs-auto-close="outside"
                     aria-expanded="false">
-                    <i class="ti ti-bell ti-md"></i>
-                    <span class="badge bg-success rounded-pill badge-notifications">0</span>
+                    <i class="bx bx-envelope ti-md"></i>
+                    <span class="badge bg-primary rounded-pill badge-notifications">0</span>
                   </a>
                   <ul v-if="dpOpen3" class="dropdown-menu dropdown-menu-end py-0 show" data-bs-popper="static">
                     <li class="dropdown-menu-header border-bottom">
@@ -475,7 +475,7 @@ watch(() => router.currentRoute.value, (to, from) => {
                     <li class="dropdown-menu-footer border-top">
                       <a
                         href="javascript:void(0);"
-                        class="dropdown-item d-flex justify-content-center text-success p-2 h-px-40 mb-1 align-items-center">
+                        class="dropdown-item d-flex justify-content-center text-primary p-2 h-px-40 mb-1 align-items-center">
                         view all notification
                       </a>
                     </li>
@@ -486,7 +486,7 @@ watch(() => router.currentRoute.value, (to, from) => {
                 <li class="nav-item navbar-dropdown dropdown-user dropdown show" >
                   <a @click="toggleDropdown('dpOpen4')" class="nav-link dropdown-toggle hide-arrow show" href="javascript:void(0);" ><!--data-bs-toggle="dropdown"-->
                      <div class="avatar me-2 avatar-online">
-                      <span class="avatar-initial rounded-circle bg-label-success">
+                      <span class="avatar-initial rounded-circle bg-label-primary">
                         <font style="font-family: 'Nunito';">{{ user?.name?.substring(0, 2) }}</font>
                       </span>
                      </div>
@@ -498,7 +498,7 @@ watch(() => router.currentRoute.value, (to, from) => {
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <span class="avatar-initial rounded-circle bg-label-success">
+                              <span class="avatar-initial rounded-circle bg-label-primary">
                                 <font style="font-family: 'Nunito';">{{ user?.name?.substring(0, 2) }}</font>
                               </span>
                             </div>
@@ -518,7 +518,7 @@ watch(() => router.currentRoute.value, (to, from) => {
                   <perfect-scrollbar style="height: 120px;">
                     <li>
                       <a class="dropdown-item" href="#">
-                        <i class="ti ti-user-check me-2 ti-sm"></i>
+                        <i class="bx bx-user-circle me-2 ti-sm"></i>
                         <span class="align-middle">My Profile</span>
                       </a>
                     </li>
@@ -529,7 +529,7 @@ watch(() => router.currentRoute.value, (to, from) => {
 
                     <li>
                       <a class="dropdown-item" @click="logout" href="javascript:void(0);">
-                        <i class="ti ti-logout me-2 ti-sm"></i>
+                        <i class="bx bx-log-in-circle me-2 ti-sm"></i>
                         <span class="align-middle">Logout</span>
                       </a>
                     </li>
@@ -549,7 +549,7 @@ watch(() => router.currentRoute.value, (to, from) => {
                 aria-label="Search..."
                 @keyup="searchData($event.target.value)"
               />
-              <i @click="toggolSearch" class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
+              <i @click="toggolSearch" class="bx bx-x ti-sm search-toggler cursor-pointer"></i>
             </div>
           </nav>
 
