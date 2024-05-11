@@ -51,7 +51,7 @@ const updateDataCustom = async () => {
                 title: 'Success',
                 text: data.message,
                 icon: 'success',
-                confirmButtonColor: '#28c76f',
+                confirmButtonColor: '#696cff',
                 confirmButtonText: 'Close',
             })
             get_setting();

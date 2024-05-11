@@ -1,8 +1,6 @@
 <script setup>
 import { onMounted,ref,reactive } from 'vue';
 import useDataCall from "@/components/apis/datacall";
-import modelData from "@/components/apis/modeldata";
-import useReuseableData from "@/components/apis/reuseabledata";
 import usemodelData from "@/components/apis/modelData";
 
 const { validationErrors,urlcall,loadingBtn,storeData,addingstatus } = useDataCall();
@@ -47,7 +45,7 @@ const saveData = async () => {
          </div>
          <div class="col-12 col-md-6 d-flex align-items-center justify-content-end flex-column flex-md-row pe-3 gap-md-2 border-bottom">
             <div id="DataTables_Table_0_filter" class="dataTables_filter">
-               <RouterLink  :to="{name:'admin.'+url_data+'.list'}" class="btn btn-secondary btn-success" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span><i class="ti ti-arrow-back-up-double me-md-2"></i><span class="d-md-inline-block d-none">Back to previous</span></span>
+               <RouterLink  :to="{name:'admin.'+url_data+'.list'}" class="btn btn-secondary btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span><i class="ti ti-arrow-back-up-double me-md-2"></i><span class="d-md-inline-block d-none">Back to previous</span></span>
                </RouterLink>
             </div>
             <div class="invoice_status mb-3 mb-md-0"></div>
@@ -56,7 +54,7 @@ const saveData = async () => {
       </div>
 
       <form @submit.prevent="saveData()" class="card-body" enctype="multipart/form-data">
-         <div class="alert alert-success alert-dismissible" role="alert" v-if="Object.keys(validationErrors).length > 0">
+         <div class="alert alert-primary alert-dismissible" role="alert" v-if="Object.keys(validationErrors).length > 0">
             <ul class="mb-0" style="font-family: 'Nunito';">
                <li v-for="(value, key) in validationErrors" :key="key">{{ value[0] }}</li>
             </ul>
@@ -95,10 +93,10 @@ const saveData = async () => {
          </div>
          <hr/>
          <div class="pt-4">
-            <button type="submit" class="btn btn-success me-sm-3 me-1 waves-effect waves-light">
+            <button type="submit" class="btn btn-primary me-sm-3 me-1 waves-effect waves-light">
                {{ loadingBtn ? "Please wait" : "Submit" }}
             </button>
-            <button type="reset" class="btn btn-label-secondary waves-effect">Reset</button>
+            <button type="reset" class="btn btn-secondary waves-effect">Reset</button>
          </div>
          <br/>
       </form>

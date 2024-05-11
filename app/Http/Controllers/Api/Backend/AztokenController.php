@@ -6,17 +6,17 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Validator;
-use App\Repositories\Aztoken\Interfaces\AztokenRepositoryInterface;
+use App\Repositories\Aztoken\AztokenInterface;
 use Illuminate\Validation\Rule;
 
 class AztokenController extends Controller
 {
 
-    protected $AztokenRepository;
+    protected $AztokenInterface;
 
-    public function __construct(AztokenRepositoryInterface $AztokenRepository)
+    public function __construct(AztokenInterface $AztokenInterface)
     {
-        $this->AztokenRepository = $AztokenRepository;
+        $this->AztokenInterface = $AztokenInterface;
     }
 
     public function get_aztoken(Request $request): JsonResponse
@@ -32,7 +32,7 @@ class AztokenController extends Controller
             return response()->json($response, 400);
         }
 
-        $alldata = $this->AztokenRepository->gettoken($request->aztoken_key);
+        $alldata = $this->AztokenInterface->gettoken($request->aztoken_key);
         if($alldata==null){
             $response = ['status' => false,'aztoken' => '','message' => 'Access token not found , you are not authorized to use this api.',];
             return response()->json($response, 400);
@@ -44,7 +44,7 @@ class AztokenController extends Controller
 
     public function index(): JsonResponse
     {
-        $alldata = $this->AztokenRepository->alldata($type='withpaginate',$withrelation=null);
+        $alldata = $this->AztokenInterface->alldata($type='withpaginate',$withrelation=null);
         $response = [
             'status' => true,
             'alldata' => $alldata,
@@ -54,7 +54,7 @@ class AztokenController extends Controller
 
     public function index_all(): JsonResponse
     {
-        $alldata = $this->AztokenRepository->alldata($type='withoutpaginate',$withrelation=null);
+        $alldata = $this->AztokenInterface->alldata($type='withoutpaginate',$withrelation=null);
         $response = [
             'status' => true,
             'alldata' => $alldata,
@@ -77,7 +77,7 @@ class AztokenController extends Controller
             return response()->json($response, 400);
         }
 
-        $save = $this->AztokenRepository->savedata($type='save',$request,$id='null');
+        $save = $this->AztokenInterface->savedata($type='save',$request,$id='null');
 
         if($save){
             $statuscode = 200;
@@ -99,7 +99,7 @@ class AztokenController extends Controller
 
     public function edit($id): JsonResponse
     {
-        $alldata = $this->AztokenRepository->singledata($id,$withrelation=null);
+        $alldata = $this->AztokenInterface->singledata($id,$withrelation=null);
         $response = [
             'status' => true,
             'alldata' => $alldata,
@@ -120,7 +120,7 @@ class AztokenController extends Controller
             ];
             return response()->json($response, 400);
         }
-        $save = $this->AztokenRepository->savedata($type='update',$request,$id);
+        $save = $this->AztokenInterface->savedata($type='update',$request,$id);
 
         if($save){
             $statuscode = 200;
@@ -141,7 +141,7 @@ class AztokenController extends Controller
 
     public function destroy($id): JsonResponse
     {
-        $delete = $this->AztokenRepository->deletedata($id,$withrelation=null);
+        $delete = $this->AztokenInterface->deletedata($id,$withrelation=null);
         if($delete){
             $statuscode = 200;
             $response = [
@@ -164,10 +164,10 @@ class AztokenController extends Controller
 	{
         $query = $request->get('search');
 		if($request->get('search') == null){
-            $alldata = $this->AztokenRepository->alldata($type='withpaginate',$withrelation=null);
+            $alldata = $this->AztokenInterface->alldata($type='withpaginate',$withrelation=null);
 		}
 		else{
-            $alldata = $this->AztokenRepository->searchdata($query,$type='withpaginate',$searchfield='aztoken_key',$withrelation=null);
+            $alldata = $this->AztokenInterface->searchdata($query,$type='withpaginate',$searchfield='aztoken_key',$withrelation=null);
 		}
         $statuscode = 200;
         $response = [

@@ -82,8 +82,8 @@ export default function useDataCall() {
             text: "Deleted data cannot be retrive!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#28c76f',
-            cancelButtonColor: '#28c76f',
+            confirmButtonColor: '#696cff',
+            cancelButtonColor: '#696cff',
             confirmButtonText: 'Yes, delete it!',
             cancelButtonText: 'No',
         }).then((result) => {
@@ -94,7 +94,7 @@ export default function useDataCall() {
                     title: 'Success',
                     text: response.data.message,
                     icon: 'success',
-                    confirmButtonColor: '#28c76f',
+                    confirmButtonColor: '#696cff',
                     confirmButtonText: 'Close',
                 })
                 getResults();
@@ -116,7 +116,7 @@ export default function useDataCall() {
                 title: 'Success',
                 text: data.message,
                 icon: 'success',
-                confirmButtonColor: '#28c76f',
+                confirmButtonColor: '#696cff',
                 confirmButtonText: 'Close',
             })
             addingstatus.value = true;
@@ -142,7 +142,7 @@ export default function useDataCall() {
                 title: 'Success',
                 text: data.message,
                 icon: 'success',
-                confirmButtonColor: '#28c76f',
+                confirmButtonColor: '#696cff',
                 confirmButtonText: 'Close',
             })
             router.push({name: 'admin.'+urlcall.value+'.list'});
@@ -167,7 +167,7 @@ export default function useDataCall() {
                 title: 'Success',
                 text: data.message,
                 icon: 'success',
-                confirmButtonColor: '#28c76f',
+                confirmButtonColor: '#696cff',
                 confirmButtonText: 'Close',
             })
         }).catch(({response})=>{
@@ -193,7 +193,7 @@ export default function useDataCall() {
                 title: 'Success',
                 text: 'File downloaded successfully',
                 icon: 'success',
-                confirmButtonColor: '#28c76f',
+                confirmButtonColor: '#696cff',
                 confirmButtonText: 'Close',
             });
         })
@@ -219,7 +219,7 @@ export default function useDataCall() {
                 title: 'Success',
                 text: data.message,
                 icon: 'success',
-                confirmButtonColor: '#28c76f',
+                confirmButtonColor: '#696cff',
                 confirmButtonText: 'Close',
             })
             addingstatus.value = true;

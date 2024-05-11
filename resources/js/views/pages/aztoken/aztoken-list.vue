@@ -47,7 +47,7 @@ onMounted(() => {
                      </div>
                      <div class="col-12 col-md-6 d-flex align-items-center justify-content-end flex-column flex-md-row pe-3 gap-md-2 border-bottom">
                         <div id="DataTables_Table_0_filter" class="dataTables_filter">
-                           <RouterLink  :to="{name:'admin.'+url_data+'.add'}" class="btn btn-secondary btn-success" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span><i class="ti ti-square-rounded-plus me-md-2"></i><span class="d-md-inline-block d-none">Add data</span></span>
+                           <RouterLink  :to="{name:'admin.'+url_data+'.add'}" class="btn btn-secondary btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span><i class="ti ti-square-rounded-plus me-md-2"></i><span class="d-md-inline-block d-none">Add data</span></span>
                            </RouterLink>
                         </div>
                         <div class="invoice_status mb-3 mb-md-0"></div>
@@ -71,14 +71,14 @@ onMounted(() => {
                               </td>
                               <td><b>{{ singledata.aztoken }}</b></td>
                               <td><b>{{ singledata.aztoken_key }}</b></td>
-                              <td><span class="badge bg-label-success me-1" >{{ singledata.status }}</span></td>
+                              <td><span class="badge bg-label-primary me-1" >{{ singledata.status }}</span></td>
                               <td>
                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                    <RouterLink :to="{ name: 'admin.'+url_data+'.edit', params: { id: singledata.id } }" class="btn btn-outline-success btn-sm waves-effect waves-light">
-                                       <i class="ti ti-edit me-md-2"></i>
+                                    <RouterLink :to="{ name: 'admin.'+url_data+'.edit', params: { id: singledata.id } }" class="btn btn-outline-primary btn-sm waves-effect waves-light">
+                                       <i class="bx bx-edit me-md-2"></i>
                                     </RouterLink>
-                                    <button @click.prevent="dataDelete(singledata.id, index)" type="button" class="btn btn-outline-success btn-sm waves-effect waves-light">
-                                       <i class="ti ti-square-rounded-x me-md-2"></i>
+                                    <button @click.prevent="dataDelete(singledata.id, index)" type="button" class="btn btn-outline-primary btn-sm waves-effect waves-light">
+                                       <i class="bx bx-trash-alt me-md-2"></i>
                                     </button>
                                  </div>
                               </td>

@@ -84,10 +84,9 @@ watch(() => router.currentRoute.value, (to, from) => {
                 {{ setting_admin?.site_name }}
               </span>
             </RouterLink>
-
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
-              <i @click="layoutColopsed" class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
-              <i @click="openCloseMobileMenu" class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+              <i @click="layoutColopsed" class="bx bx-log-out-circle menu-toggle-icon d-none d-xl-block ti-sm align-middle" style="padding-left: 2px;padding-top: 1px;"></i>
+              <i @click="openCloseMobileMenu" class="bx bx-x d-block d-xl-none ti-sm align-middle" style="padding-left: 2px;padding-top: 1px;"></i>
             </a>
           </div>
 
@@ -566,9 +565,10 @@ watch(() => router.currentRoute.value, (to, from) => {
                 <div
                   class="footer-container d-flex align-items-center justify-content-between py-2 flex-md-row flex-column">
                   <div>
-                    © 2024 Developed by <a href="https://softscandic.com/" target="_blank" class="fw-medium">
+                    © 2024 Developed by
+                    <!-- <a href="https://softscandic.com/" target="_blank" class="fw-medium">
                         <img :src="$frontendurl+'/logo-developer2.png'" style="width: 100px;">
-                    </a>
+                    </a> -->
                   </div>
 
                   <div class="d-none d-lg-inline-block">
