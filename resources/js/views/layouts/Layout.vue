@@ -108,30 +108,7 @@ watch(() => router.currentRoute.value, (to, from) => {
               </RouterLink>
             </li>
 
-            <li :class="isOpen1?('menu-item open'):('menu-item')" >
-              <a  @click="toggleMenu('isOpen1')" href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-slider-alt"></i>
-                <div data-i18n="System">System</div>
-                <div class="badge bg-primary rounded-pill ms-auto">3</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item ">
-                  <a href="#" class="menu-link">
-                    <div data-i18n="Permission">Permission</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="#" class="menu-link">
-                    <div data-i18n="User role">User role</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="#" class="menu-link">
-                    <div data-i18n="Admin">Admin</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
+
             <li :class="activemenu == 'aztoken' ? ('menu-item active'):('menu-item')">
               <RouterLink :to="{name:'admin.aztoken.list'}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-key"></i>
@@ -139,182 +116,6 @@ watch(() => router.currentRoute.value, (to, from) => {
               </RouterLink>
             </li>
 
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Basic information</span>
-            </li>
-            <li :class="isOpen2?('menu-item open'):('menu-item')">
-              <a @click="toggleMenu('isOpen2')" href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-info-circle"></i>
-                <div data-i18n="Basic information">Basic info</div>
-                <div class="badge bg-primary rounded-pill ms-auto">13</div>
-              </a>
-              <ul class="menu-sub">
-                <li :class="activemenu == 'category' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.category.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Category">Category</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'subcategory' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.subcategory.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Subcategory">Subcategory</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'subsubcategory' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.subsubcategory.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Subsubcategory">Subsubcategory</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'bondsize' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.bondsize.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Bond size">Bond size</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'brand' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.brand.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Brand">Brand</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'color' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.color.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Color">Color</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'cupsize' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.cupsize.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Cup size">Cup size</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'delivarycharge' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.delivarycharge.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Delivary charge">Delivary charge</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'fabric' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.fabric.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Fabric">Fabric</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'origincountry' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.origincountry.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Origin country">Origin country</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'producttype' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.producttype.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Product type">Product type</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'size' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.size.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Size">Size</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'pricecode' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.pricecode.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Price code">Price code</div>
-                  </RouterLink>
-                </li>
-              </ul>
-            </li>
-
-            <!-- <li :class="isOpen3?('menu-item open'):('menu-item')">
-              <a @click="toggleMenu('isOpen3')" href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-layers-union"></i>
-                <div data-i18n="Product info">Product info</div>
-                <div class="badge bg-primary rounded-pill ms-auto">1</div>
-              </a>
-              <ul class="menu-sub">
-                <li :class="activemenu == 'product' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.product.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Product">Product</div>
-                  </RouterLink>
-                </li>
-                <li :class="activemenu == 'customer' ? ('menu-item active'):('menu-item')">
-                  <RouterLink :to="{name:'admin.customer.list'}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-language"></i>
-                    <div data-i18n="Customer">Customer</div>
-                  </RouterLink>
-                </li>
-              </ul>
-            </li> -->
-
-
-            <li :class="activemenu == 'product' ? ('menu-item active'):('menu-item')">
-              <RouterLink :to="{name:'admin.product.list'}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-shopping-bag"></i>
-                <div data-i18n="Product information">Product information</div>
-              </RouterLink>
-            </li>
-            <li :class="activemenu == 'customer' ? ('menu-item active'):('menu-item')">
-              <RouterLink :to="{name:'admin.customer.list'}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-users"></i>
-                <div data-i18n="Customer">Customer</div>
-              </RouterLink>
-            </li>
-
-
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Order management</span>
-            </li>
-
-            <li :class="activemenu == 'order' ? ('menu-item active'):('menu-item')">
-              <RouterLink :to="{name:'admin.order.list'}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-box"></i>
-                <div data-i18n="Orders">Orders</div>
-              </RouterLink>
-            </li>
-
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Report management</span>
-            </li>
-            <li :class="activemenu == 'masjiduser' ? ('menu-item active'):('menu-item')">
-              <RouterLink :to="{name:'admin.masjiduser.list'}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-users"></i>
-                <div data-i18n="Product report">Product report</div>
-              </RouterLink>
-            </li>
-            <li :class="activemenu == 'salahtime' ? ('menu-item active'):('menu-item')">
-              <RouterLink :to="{name:'admin.masjid.list'}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-calendar-time"></i>
-                <div data-i18n="Customer report">Customer report</div>
-              </RouterLink>
-            </li>
-            <li :class="activemenu == 'displaymessage' ? ('menu-item active'):('menu-item')">
-              <RouterLink :to="{name:'admin.masjid.list'}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-message"></i>
-                <div data-i18n="Sales report">Sales report</div>
-              </RouterLink>
-            </li>
-            <li :class="activemenu == 'displaymessage' ? ('menu-item active'):('menu-item')">
-              <RouterLink :to="{name:'admin.masjid.list'}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-message"></i>
-                <div data-i18n="Profit report">Profit report</div>
-              </RouterLink>
-            </li>
-
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Frontend management</span>
-            </li>
-            <li :class="activemenu == 'websitepage' ? ('menu-item active'):('menu-item')">
-              <RouterLink :to="{name:'admin.websitepage.list'}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-app-window"></i>
-                <div data-i18n="Website pages">Website pages</div>
-              </RouterLink>
-            </li>
 
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Others</span>
@@ -340,7 +141,7 @@ watch(() => router.currentRoute.value, (to, from) => {
             id="layout-navbar">
             <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
               <a @click="openCloseMobileMenu" class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                <i class="ti ti-menu-2 ti-sm"></i>
+                <i class="bx bx-menu ti-sm"></i>
               </a>
             </div>
 
@@ -349,7 +150,7 @@ watch(() => router.currentRoute.value, (to, from) => {
               <div class="navbar-nav align-items-center">
                 <div class="nav-item navbar-search-wrapper mb-0">
                   <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
-                    <i @click="toggolSearch" class="ti ti-search ti-md me-2"></i>
+                    <i @click="toggolSearch" class="bx bx-search ti-md me-2"></i>
                     <span class="d-none d-md-inline-block text-muted">Enter here to search</span>
                   </a>
                 </div>
@@ -359,7 +160,7 @@ watch(() => router.currentRoute.value, (to, from) => {
 
                 <li class="nav-item dropdown-language dropdown me-2 me-xl-0 show">
                   <a @click="toggleDropdown('dpOpen1')" class="nav-link dropdown-toggle hide-arrow show" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <i class="ti ti-language-hiragana rounded-circle ti-md"></i>
+                    <i class="bx bx-globe rounded-circle ti-md"></i>
                   </a>
                   <ul v-if="dpOpen1" class="dropdown-menu dropdown-menu-end show" data-bs-popper="static">
                     <li>
