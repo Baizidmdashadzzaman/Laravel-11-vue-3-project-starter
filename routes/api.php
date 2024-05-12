@@ -50,7 +50,21 @@ Route::controller(ReuseableController::class)->prefix('reuseable')->group(functi
 });
 //reuseable route end
 
-Route::middleware(['auth:sanctum', AdminMiddleware::class])->group(function(){
+$reusedRoutes = function ($controllerClass, $prefix) {
+    Route::controller($controllerClass)->prefix($prefix)->group(function () use ($prefix){
+        require('baseroute.php');
+        if($prefix == 'role'){
+            Route::get('/role-permission-list/{id}','role_permission_list');
+            Route::post('/role-permission-update','role_permission_update');
+        }
+        if($prefix == 'setting'){
+            Route::get('/setting','setting');
+            Route::post('/update','update');
+        }
+    });
+};
+
+Route::middleware(['auth:sanctum', AdminMiddleware::class])->group(function() use($reusedRoutes){
     //user data route start
     Route::controller(AuthController::class)->group(function(){
         Route::post('/logout','logout');
@@ -58,31 +72,9 @@ Route::middleware(['auth:sanctum', AdminMiddleware::class])->group(function(){
     });
     //user data route end
 
-    //setting route start
-    Route::controller(SettingController::class)->prefix('setting')->group(function(){
-        Route::get('/setting','setting');
-        Route::post('/update','update');
-    });
-    //setting route end
-
-
-    //secureapitoken route start
-    Route::controller(AztokenController::class)->prefix('aztoken')->group(function(){
-        require('baseroute.php');
-    });
-    //secureapitoken route end
-
-
-    $reusedRoutes = function ($controllerClass, $prefix) {
-        Route::controller($controllerClass)->prefix($prefix)->group(function () {
-            require('baseroute.php');
-        });
-    };
-
-    //role route start
     $reusedRoutes(RoleController::class, 'role');
     $reusedRoutes(PermissionController::class, 'permission');
-    //role route start
-
+    $reusedRoutes(AztokenController::class, 'aztoken');
+    $reusedRoutes(SettingController::class, 'setting');
 
 });

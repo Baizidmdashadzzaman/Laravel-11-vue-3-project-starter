@@ -72,6 +72,9 @@ onMounted(() => {
                               <td><span class="badge bg-label-primary me-1" >{{ singledata.status }}</span></td>
                               <td>
                                  <div class="btn-group" role="group" aria-label="Basic example">
+                                    <RouterLink :to="{ name: 'admin.'+url_data+'.permission', params: { id: singledata.id } }" class="btn btn-outline-primary btn-sm waves-effect waves-light">
+                                       <i class="bx bx-key me-md-2"></i>
+                                    </RouterLink>
                                     <RouterLink :to="{ name: 'admin.'+url_data+'.edit', params: { id: singledata.id } }" class="btn btn-outline-primary btn-sm waves-effect waves-light">
                                        <i class="bx bx-edit me-md-2"></i>
                                     </RouterLink>

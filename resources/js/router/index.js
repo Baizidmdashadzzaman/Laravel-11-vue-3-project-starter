@@ -68,6 +68,7 @@ const router = createRouter({
         { name: "admin.role.add",path: '/admin/role/add',component: roleAdd,meta: { title: `Role add`}},
         { name: "admin.role.list",path: '/admin/role/list',component: roleList,meta: { title: `Role list`}},
         { name: "admin.role.edit",path: '/admin/role/edit/:id',component: roleEdit,meta: { title: `Role edit`}},
+        { name: "admin.role.permission",path: '/admin/role/permission/:id',component: roleEdit,meta: { title: `Role permission`}},
 
         { name: "admin.permission.add",path: '/admin/permission/add',component: permissionAdd,meta: { title: `Permission add`}},
         { name: "admin.permission.list",path: '/admin/permission/list',component: permissionList,meta: { title: `Permission list`}},

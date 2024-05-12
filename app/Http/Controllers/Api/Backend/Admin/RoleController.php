@@ -9,7 +9,9 @@ use Validator;
 use App\Repositories\Role\RoleInterface;
 use Illuminate\Validation\Rule;
 
-use App\Models\Role;
+use App\Models\{
+    Role,RolePermission,Permission
+};
 
 class RoleController extends Controller
 {
@@ -21,6 +23,45 @@ class RoleController extends Controller
         $this->RoleInterface = $RoleInterface;
     }
 
+    public function role_permission_list($role_id): JsonResponse
+    {
+        $role = Role::find($role);
+        $permission_list = Permission::where('status','active')->get();
+        $permission_list = $permission_list->map(function ($item) use ($role_id){
+            $item['added_to_role'] = 'no';
+            $check_if_added = RolePermission::where('role_id',$role_id)
+                                   ->where('permission_id',$item->id)->first();
+            if($check_if_added != null){$item['added_to_role'] = 'yes';}
+            return $item;
+        });
+
+        return response()->json([
+		   'role' => $role,
+           'permission_list' => $permission_list,
+		]);
+    }
+
+    public function role_permission_update(Request $request): JsonResponse
+    {
+           $check = RolePermission::where('role_id',$request->role_id)
+           ->where('permission_id',$request->permission_id)->first();
+           if($check != null){
+               $check->delete();
+               $status = 0;
+               $message = "Permission removed for role";
+           }else{
+               $data = new RolePermission();
+               $data->role_id = $request->role_id;
+               $data->permission_id = $request->permission_id;
+               $data->save();
+               $status = 1;
+               $message = "Permission added to role";
+           }
+           return response()->json([
+              'status' => $status,
+              'message' => $message,
+           ]);
+    }
 
     public function index(): JsonResponse
     {
