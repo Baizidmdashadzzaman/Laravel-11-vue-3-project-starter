@@ -7,6 +7,8 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\{
     Setting\SettingInterface,Setting\SettingRepository,
     Aztoken\AztokenInterface,Aztoken\AztokenRepository,
+    Role\RoleInterface,Role\RoleRepository,
+    Permission\PermissionInterface,Permission\PermissionRepository,
 };
 
 
@@ -19,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(SettingInterface::class,SettingRepository::class);
         $this->app->bind(AztokenInterface::class,AztokenRepository::class);
+        $this->app->bind(RoleInterface::class,RoleRepository::class);
+        $this->app->bind(PermissionInterface::class,PermissionRepository::class);
     }
 
     /**

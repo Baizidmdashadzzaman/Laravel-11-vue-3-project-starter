@@ -101,18 +101,32 @@ watch(() => router.currentRoute.value, (to, from) => {
                 <div data-i18n="Dashboard">Dashboard</div>
               </RouterLink>
             </li>
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">System</span>
+            </li>
             <li :class="activemenu == 'setting' ? ('menu-item active'):('menu-item')">
               <RouterLink :to="{name:'admin.setting'}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div data-i18n="Setting">Setting</div>
               </RouterLink>
             </li>
-
-
             <li :class="activemenu == 'aztoken' ? ('menu-item active'):('menu-item')">
               <RouterLink :to="{name:'admin.aztoken.list'}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-key"></i>
                 <div data-i18n="Access token">Access token</div>
+              </RouterLink>
+            </li>
+            <li :class="activemenu == 'role' ? ('menu-item active'):('menu-item')">
+              <RouterLink :to="{name:'admin.role.list'}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-pin"></i>
+                <div data-i18n="Role">Role</div>
+              </RouterLink>
+            </li>
+            <li :class="activemenu == 'permission' ? ('menu-item active'):('menu-item')">
+              <RouterLink :to="{name:'admin.permission.list'}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-check"></i>
+                <div data-i18n="Permission">Permission</div>
               </RouterLink>
             </li>
 

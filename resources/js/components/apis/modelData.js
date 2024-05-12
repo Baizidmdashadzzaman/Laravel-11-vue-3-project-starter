@@ -461,7 +461,19 @@ export default function modelData() {
         barcode:'',
     };
 
+    const state_role = {
+        name:'',
+        status:'active',
+    };
+    const state_permission = {
+        name:'',
+        status:'active',
+    };
+
     return {
+        state_role,
+        state_permission,
+
         state_order,
         state_orderproduct,
         state_productsearch,

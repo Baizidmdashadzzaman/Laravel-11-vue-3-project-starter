@@ -25,6 +25,13 @@ const aztokenAdd = () => import('@/views/pages/aztoken/aztoken-add.vue')
 const aztokenEdit = () => import('@/views/pages/aztoken/aztoken-edit.vue')
 const aztokenList = () => import('@/views/pages/aztoken/aztoken-list.vue')
 
+const roleAdd = () => import('@/views/pages/admin/role/role-add.vue')
+const roleEdit = () => import('@/views/pages/admin/role/role-edit.vue')
+const roleList = () => import('@/views/pages/admin/role/role-list.vue')
+
+const permissionAdd = () => import('@/views/pages/admin/permission/permission-add.vue')
+const permissionEdit = () => import('@/views/pages/admin/permission/permission-edit.vue')
+const permissionList = () => import('@/views/pages/admin/permission/permission-list.vue')
 
 /* Authenticated component */
 
@@ -56,7 +63,17 @@ const router = createRouter({
     }]},
 
 
+    { path: "/",component: Layout,meta: {middleware: "auth"},
+      children: [
+        { name: "admin.role.add",path: '/admin/role/add',component: roleAdd,meta: { title: `Role add`}},
+        { name: "admin.role.list",path: '/admin/role/list',component: roleList,meta: { title: `Role list`}},
+        { name: "admin.role.edit",path: '/admin/role/edit/:id',component: roleEdit,meta: { title: `Role edit`}},
 
+        { name: "admin.permission.add",path: '/admin/permission/add',component: permissionAdd,meta: { title: `Permission add`}},
+        { name: "admin.permission.list",path: '/admin/permission/list',component: permissionList,meta: { title: `Permission list`}},
+        { name: "admin.permission.edit",path: '/admin/permission/edit/:id',component: permissionEdit,meta: { title: `Permission edit`}},
+      ]
+    },
 
 
 

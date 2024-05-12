@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\Backend\{
-    Admin\Auth\AuthController,AztokenController,SettingController,ReuseableController
+    Admin\Auth\AuthController,AztokenController,SettingController,ReuseableController,
+    Admin\RoleController,Admin\PermissionController,
 };
 
 use App\Http\Middleware\AdminMiddleware;
@@ -71,6 +72,17 @@ Route::middleware(['auth:sanctum', AdminMiddleware::class])->group(function(){
     });
     //secureapitoken route end
 
+
+    $reusedRoutes = function ($controllerClass, $prefix) {
+        Route::controller($controllerClass)->prefix($prefix)->group(function () {
+            require('baseroute.php');
+        });
+    };
+
+    //role route start
+    $reusedRoutes(RoleController::class, 'role');
+    $reusedRoutes(PermissionController::class, 'permission');
+    //role route start
 
 
 });
