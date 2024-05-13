@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\Backend\{
     Admin\Auth\AuthController,AztokenController,SettingController,ReuseableController,
-    Admin\RoleController,Admin\PermissionController,
+    Admin\RoleController,Admin\PermissionController,Admin\AdminController,
 };
 
 use App\Http\Middleware\AdminMiddleware;
@@ -72,6 +72,7 @@ Route::middleware(['auth:sanctum', AdminMiddleware::class])->group(function() us
     });
     //user data route end
 
+    $reusedRoutes(AdminController::class, 'admin');
     $reusedRoutes(RoleController::class, 'role');
     $reusedRoutes(PermissionController::class, 'permission');
     $reusedRoutes(AztokenController::class, 'aztoken');

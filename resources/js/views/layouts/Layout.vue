@@ -129,6 +129,12 @@ watch(() => router.currentRoute.value, (to, from) => {
                 <div data-i18n="Permission">Permission</div>
               </RouterLink>
             </li>
+            <li :class="activemenu == 'admin' ? ('menu-item active'):('menu-item')">
+              <RouterLink :to="{name:'admin.admin.list'}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <div data-i18n="Admin">Admin</div>
+              </RouterLink>
+            </li>
 
 
             <li class="menu-header small text-uppercase">
