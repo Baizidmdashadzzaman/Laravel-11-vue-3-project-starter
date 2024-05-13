@@ -47,6 +47,11 @@ window.Swal =  app.config.globalProperties.$swal;
 app.component('QuillEditor', QuillEditor);
 app.component('v-select', vSelect)
 
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+
+app.use(Toast);
+
 if (window.location.hostname === 'softscandic.com') {
     app.mount('#app');
 } else if(window.location.hostname === 'www.softscandic.com'){

@@ -25,7 +25,7 @@ class RoleController extends Controller
 
     public function role_permission_list($role_id): JsonResponse
     {
-        $role = Role::find($role);
+        $role = Role::find($role_id);
         $permission_list = Permission::where('status','active')->get();
         $permission_list = $permission_list->map(function ($item) use ($role_id){
             $item['added_to_role'] = 'no';

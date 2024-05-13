@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2024 at 03:56 PM
+-- Generation Time: May 13, 2024 at 07:33 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -145,7 +145,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2024_05_11_055642_create_settings_table', 2),
 (6, '2024_05_11_081326_create_aztokens_table', 3),
 (7, '2024_05_12_115654_create_roles_table', 4),
-(8, '2024_05_12_120549_create_permissions_table', 4);
+(8, '2024_05_12_120549_create_permissions_table', 4),
+(9, '2024_05_12_134109_create_role_permissions_table', 5);
 
 -- --------------------------------------------------------
 
@@ -206,7 +207,7 @@ CREATE TABLE `personal_access_tokens` (
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
 (1, 'App\\Models\\User', 1, 'Mymp', 'c39860c23d0bc3668a3f3ac06d50140da6dafb67428f267232aee88399c6fac5', '[\"usertype:admin\"]', '2024-05-09 12:17:54', NULL, '2024-05-09 12:08:18', '2024-05-09 12:17:54'),
 (8, 'App\\Models\\User', 1, 'Mymp', 'e87a23a8ed8d613db700b480342f7b55ac7493938b94a5f833a5e48438ab4908', '[\"usertype:admin\"]', NULL, NULL, '2024-05-11 00:40:48', '2024-05-11 00:40:48'),
-(10, 'App\\Models\\User', 1, 'Mymp', 'b239228437ebcb532341194e9f0c258c07a253a4095046b08d93f0d4a776da90', '[\"usertype:admin\"]', '2024-05-12 07:54:02', NULL, '2024-05-11 03:15:38', '2024-05-12 07:54:02');
+(10, 'App\\Models\\User', 1, 'Mymp', 'b239228437ebcb532341194e9f0c258c07a253a4095046b08d93f0d4a776da90', '[\"usertype:admin\"]', '2024-05-13 11:30:30', NULL, '2024-05-11 03:15:38', '2024-05-13 11:30:30');
 
 -- --------------------------------------------------------
 
@@ -232,6 +233,27 @@ INSERT INTO `roles` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `role_permissions`
+--
+
+CREATE TABLE `role_permissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_permissions`
+--
+
+INSERT INTO `role_permissions` (`id`, `role_id`, `permission_id`, `created_at`, `updated_at`) VALUES
+(5, 1, 2, '2024-05-13 11:30:30', '2024-05-13 11:30:30');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sessions`
 --
 
@@ -249,7 +271,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('wkxzZi5lTNicOjvWRgInkfLGgbyHqB6KQTaEhDwh', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieG14WXJqZkp6b0ZZVW1mRk1lbElpVjEzSVE5Ym9CQlByQkRDUGxJcyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZXJ2aWNld29ya2VyLmpzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1715521153);
+('9noyto5Y8Jvsbj1u7mPO2i3RhUJblZ6p8NrqZrx0', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZW80Rm5sQXNkMnpkRVRiRDBVSldxQ0NaYzdOMTdlTXJaVlVZejZpcCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZXJ2aWNld29ya2VyLmpzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1715621427);
 
 -- --------------------------------------------------------
 
@@ -382,6 +404,14 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `role_permissions`
+--
+ALTER TABLE `role_permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `role_permissions_role_id_foreign` (`role_id`),
+  ADD KEY `role_permissions_permission_id_foreign` (`permission_id`);
+
+--
 -- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
@@ -428,7 +458,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -449,6 +479,12 @@ ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `role_permissions`
+--
+ALTER TABLE `role_permissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
@@ -459,6 +495,17 @@ ALTER TABLE `settings`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `role_permissions`
+--
+ALTER TABLE `role_permissions`
+  ADD CONSTRAINT `role_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`),
+  ADD CONSTRAINT `role_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
