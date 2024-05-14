@@ -24,7 +24,7 @@ class AdminController extends Controller
 
     public function index(): JsonResponse
     {
-        $alldata = $this->AdminInterface->alldata($type='withpaginate',$withrelation=null);
+        $alldata = $this->AdminInterface->alldata($type='withpaginate',$withrelation=['role']);
         $response = [
             'status' => true,
             'alldata' => $alldata,
@@ -34,7 +34,7 @@ class AdminController extends Controller
 
     public function index_all(): JsonResponse
     {
-        $alldata = $this->AdminInterface->alldata($type='withoutpaginate',$withrelation=null);
+        $alldata = $this->AdminInterface->alldata($type='withoutpaginate',$withrelation=['role']);
         $response = [
             'status' => true,
             'alldata' => $alldata,
@@ -78,7 +78,7 @@ class AdminController extends Controller
 
     public function edit($id): JsonResponse
     {
-        $alldata = $this->AdminInterface->singledata($id,$withrelation=null);
+        $alldata = $this->AdminInterface->singledata($id,$withrelation=['role']);
         $response = [
             'status' => true,
             'alldata' => $alldata,
@@ -119,33 +119,42 @@ class AdminController extends Controller
 
     public function destroy($id): JsonResponse
     {
-        $delete = $this->AdminInterface->deletedata($id,$withrelation=null);
-        if($delete){
-            $statuscode = 200;
-            $response = [
-                'status' => true,
-                'message' => "Data deleted sccuessfully.",
-            ];
-        }
-        else{
-            $statuscode = 400;
+        if($id == 4){
+            $statuscode = 201;
             $response = [
                 'status' => false,
-                'message' => "Unable to delete data,please try again.",
+                'message' => "Sorry this user cant be deleted.",
             ];
+            return response()->json($response, $statuscode);
         }
-        return response()->json($response, $statuscode);
-
+        else{
+            $delete = $this->AdminInterface->deletedata($id,$withrelation=['role']);
+            if($delete){
+                $statuscode = 200;
+                $response = [
+                    'status' => true,
+                    'message' => "Data deleted sccuessfully.",
+                ];
+            }
+            else{
+                $statuscode = 201;
+                $response = [
+                    'status' => false,
+                    'message' => "Unable to delete data,please try again.",
+                ];
+            }
+            return response()->json($response, $statuscode);
+        }
     }
 
 	public function search(Request $request): JsonResponse
 	{
         $query = $request->get('search');
 		if($request->get('search') == null){
-            $alldata = $this->AdminInterface->alldata($type='withpaginate',$withrelation=null);
+            $alldata = $this->AdminInterface->alldata($type='withpaginate',$withrelation=['role']);
 		}
 		else{
-            $alldata = $this->AdminInterface->searchdata($query,$type='withpaginate',$searchfield='name',$withrelation=null);
+            $alldata = $this->AdminInterface->searchdata($query,$type='withpaginate',$searchfield='email',$withrelation=['role']);
 		}
         $statuscode = 200;
         $response = [

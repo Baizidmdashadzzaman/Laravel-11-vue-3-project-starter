@@ -7,7 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Validator;
 use Illuminate\Validation\Rule;
 use App\Models\{
-    Aztoken,User,Setting
+    Aztoken,User,Setting,Role,Permission
 };
 use Rakibhstu\Banglanumber\NumberToBangla;
 
@@ -20,6 +20,18 @@ use App\Models\Ecommerce\{
 
 class ReuseableController extends Controller
 {
+
+    public function role_list(): JsonResponse
+    {
+        $alldata = Role::where('status','active')
+                    ->get();
+        $response = [
+            'status' => true,
+            'alldata' => $alldata,
+        ];
+        return response()->json($response, 200);
+    }
+
 
     public function delivarycharge_list(): JsonResponse
     {

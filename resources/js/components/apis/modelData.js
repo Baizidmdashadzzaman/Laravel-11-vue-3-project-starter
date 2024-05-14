@@ -470,7 +470,20 @@ export default function modelData() {
         status:'active',
     };
 
+    const state_admin = {
+        id:'',
+        name:'',
+        email:'',
+        password:'',
+        access_token:'',
+        access_token_status:'inactive',
+        status:'active',
+        role_id:'',
+    };
+
     return {
+        state_admin,
+
         state_role,
         state_permission,
 

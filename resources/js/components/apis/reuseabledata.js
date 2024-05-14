@@ -216,7 +216,19 @@ export default function useReuseableData() {
       });
    }
 
+   let allrole = ref([]);
+   const get_allrole = async () => {
+       loadingreuse.value = true;
+      await api().get('/reuseable/role-list')
+      .then((response) => {
+         loadingreuse.value = false;
+         allrole.value = response.data.alldata;
+      });
+   }
+
     return {
+        allrole,get_allrole,
+
         alldelivarycharge,get_alldelivarycharge,
         allcustomer,get_allcustomer,
         allproduct,get_allproduct,

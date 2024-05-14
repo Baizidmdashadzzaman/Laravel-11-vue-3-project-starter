@@ -185,7 +185,11 @@ router.beforeEach((to, from, next) => {
       next();
   }
   else if (to.meta.middleware == "front") {
-    next()
+    if (store.state.auth.authenticated) {
+        next({ name: "admin.dashboard" })
+    }else{
+        next()
+    }
   }
   else {
       if (store.state.auth.authenticated) {

@@ -46,6 +46,8 @@ Route::controller(ReuseableController::class)->prefix('reuseable')->group(functi
     Route::get('/cupsize-list','cupsize_list');
     Route::get('/delivarycharge-list','delivarycharge_list');
 
+    Route::get('/role-list','role_list');
+
     Route::get('/search/{id}', 'search');
 });
 //reuseable route end
