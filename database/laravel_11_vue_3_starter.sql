@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2024 at 07:33 PM
+-- Generation Time: May 14, 2024 at 03:08 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -207,7 +207,7 @@ CREATE TABLE `personal_access_tokens` (
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
 (1, 'App\\Models\\User', 1, 'Mymp', 'c39860c23d0bc3668a3f3ac06d50140da6dafb67428f267232aee88399c6fac5', '[\"usertype:admin\"]', '2024-05-09 12:17:54', NULL, '2024-05-09 12:08:18', '2024-05-09 12:17:54'),
 (8, 'App\\Models\\User', 1, 'Mymp', 'e87a23a8ed8d613db700b480342f7b55ac7493938b94a5f833a5e48438ab4908', '[\"usertype:admin\"]', NULL, NULL, '2024-05-11 00:40:48', '2024-05-11 00:40:48'),
-(10, 'App\\Models\\User', 1, 'Mymp', 'b239228437ebcb532341194e9f0c258c07a253a4095046b08d93f0d4a776da90', '[\"usertype:admin\"]', '2024-05-13 11:30:30', NULL, '2024-05-11 03:15:38', '2024-05-13 11:30:30');
+(10, 'App\\Models\\User', 1, 'Mymp', 'b239228437ebcb532341194e9f0c258c07a253a4095046b08d93f0d4a776da90', '[\"usertype:admin\"]', '2024-05-14 06:33:09', NULL, '2024-05-11 03:15:38', '2024-05-14 06:33:09');
 
 -- --------------------------------------------------------
 
@@ -249,7 +249,7 @@ CREATE TABLE `role_permissions` (
 --
 
 INSERT INTO `role_permissions` (`id`, `role_id`, `permission_id`, `created_at`, `updated_at`) VALUES
-(5, 1, 2, '2024-05-13 11:30:30', '2024-05-13 11:30:30');
+(6, 1, 2, '2024-05-13 11:35:06', '2024-05-13 11:35:06');
 
 -- --------------------------------------------------------
 
@@ -271,7 +271,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('9noyto5Y8Jvsbj1u7mPO2i3RhUJblZ6p8NrqZrx0', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZW80Rm5sQXNkMnpkRVRiRDBVSldxQ0NaYzdOMTdlTXJaVlVZejZpcCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZXJ2aWNld29ya2VyLmpzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1715621427);
+('2vsTDwZkfARHC60PDqCboqd3Qh1Xown6uAU6qPeQ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiS3lyanVSRDdFTWJxVkZJYlJFR2RHaWNmT3l6RW5lTzBhdGNuNk02ViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZXJ2aWNld29ya2VyLmpzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1715689827),
+('9noyto5Y8Jvsbj1u7mPO2i3RhUJblZ6p8NrqZrx0', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZW80Rm5sQXNkMnpkRVRiRDBVSldxQ0NaYzdOMTdlTXJaVlVZejZpcCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZXJ2aWNld29ya2VyLmpzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1715622264);
 
 -- --------------------------------------------------------
 
@@ -319,15 +320,19 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `access_token` longtext DEFAULT NULL,
+  `access_token_status` enum('active','inactive') NOT NULL DEFAULT 'inactive',
+  `status` enum('active','inactive') NOT NULL DEFAULT 'active',
+  `role_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@admin.com', NULL, '$2y$12$nknp29KdKKPzfYDCGLxUC.uTi1sR8szOwYUicZ8KxXYYoSkzO8.oW', NULL, NULL, '2024-05-09 12:08:18');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `access_token`, `access_token_status`, `status`, `role_id`) VALUES
+(1, 'Admin', 'admin@admin.com', NULL, '$2y$12$nknp29KdKKPzfYDCGLxUC.uTi1sR8szOwYUicZ8KxXYYoSkzO8.oW', NULL, NULL, '2024-05-09 12:08:18', NULL, 'inactive', 'active', 0);
 
 --
 -- Indexes for dumped tables
@@ -482,7 +487,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `role_permissions`
 --
 ALTER TABLE `role_permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `settings`

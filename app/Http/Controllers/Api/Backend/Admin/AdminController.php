@@ -45,7 +45,7 @@ class AdminController extends Controller
     public function store(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(),[
-            'name' => ['required','unique:admins'],
+            'email' => ['required','unique:users'],
         ]);
 
         if($validator->fails()){
@@ -89,7 +89,7 @@ class AdminController extends Controller
     public function update(Request $request,$id): JsonResponse
     {
         $validator = Validator::make($request->all(),[
-            'name' => ['required',Rule::unique('admins')->ignore($id)],
+            'email' => ['required',Rule::unique('users')->ignore($id)],
         ]);
         if($validator->fails()){
             $response = [
