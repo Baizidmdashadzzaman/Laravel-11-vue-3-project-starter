@@ -135,6 +135,12 @@ watch(() => router.currentRoute.value, (to, from) => {
                 <div data-i18n="Admin">Admin</div>
               </RouterLink>
             </li>
+            <li :class="activemenu == 'aichat' ? ('menu-item active'):('menu-item')">
+              <RouterLink :to="{name:'admin.ai.chat'}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <div data-i18n="AI chat">AI chat</div>
+              </RouterLink>
+            </li>
 
 
             <li class="menu-header small text-uppercase">

@@ -34,9 +34,9 @@ const permissionAdd = () => import('@/views/pages/admin/permission/permission-ad
 const permissionEdit = () => import('@/views/pages/admin/permission/permission-edit.vue')
 const permissionList = () => import('@/views/pages/admin/permission/permission-list.vue')
 
-const adminAdd = () => import('@/views/pages/admin/admin/admin-add.vue');
-const adminEdit = () => import('@/views/pages/admin/admin/admin-edit.vue');
 const adminList = () => import('@/views/pages/admin/admin/admin-list.vue');
+
+const aiChat = () => import('@/views/pages/basemodule/ai-chat/ai-chat.vue')
 
 /* Authenticated component */
 
@@ -79,9 +79,9 @@ const router = createRouter({
         { name: "admin.permission.list",path: '/admin/permission/list',component: permissionList,meta: { title: `Permission list`}},
         { name: "admin.permission.edit",path: '/admin/permission/edit/:id',component: permissionEdit,meta: { title: `Permission edit`}},
 
-        { name: "admin.admin.add",path: '/admin/admin/add',component: adminAdd,meta: { title: `Admin add`}},
         { name: "admin.admin.list",path: '/admin/admin/list',component: adminList,meta: { title: `Admin list`}},
-        { name: "admin.admin.edit",path: '/admin/admin/edit/:id',component: adminEdit,meta: { title: `Admin edit`}},
+
+        { name: "admin.ai.chat",path: '/admin/ai/chat',component: aiChat,meta: { title: `AI chat`}},
 
 
       ]
