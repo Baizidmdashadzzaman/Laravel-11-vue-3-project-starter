@@ -38,6 +38,10 @@ const adminList = () => import('@/views/pages/admin/admin/admin-list.vue');
 
 const aiChat = () => import('@/views/pages/basemodule/ai-chat/ai-chat.vue')
 
+const vuexcrudAdd = () => import('@/views/pages/modules/vuex-crud/vuex-crud-add.vue')
+const vuexcrudEdit = () => import('@/views/pages/modules/vuex-crud/vuex-crud-edit.vue')
+const vuexcrudList = () => import('@/views/pages/modules/vuex-crud/vuex-crud-list.vue')
+
 /* Authenticated component */
 
 const sitename = import.meta.env.VITE_SITE_NAME;
@@ -82,6 +86,10 @@ const router = createRouter({
         { name: "admin.admin.list",path: '/admin/admin/list',component: adminList,meta: { title: `Admin list`}},
 
         { name: "admin.ai.chat",path: '/admin/ai/chat',component: aiChat,meta: { title: `AI chat`}},
+
+        { name: "admin.vuexcrud.add",path: '/admin/vuex-crud/add',component: vuexcrudAdd,meta: { title: `Vuex crud add`}},
+        { name: "admin.vuexcrud.list",path: '/admin/vuex-crud/list',component: vuexcrudList,meta: { title: `Vuex crud list`}},
+        { name: "admin.vuexcrud.edit",path: '/admin/vuex-crud/edit/:id',component: vuexcrudEdit,meta: { title: `Vuex crud edit`}},
 
 
       ]

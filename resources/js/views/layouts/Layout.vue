@@ -141,7 +141,12 @@ watch(() => router.currentRoute.value, (to, from) => {
                 <div data-i18n="AI chat">AI chat</div>
               </RouterLink>
             </li>
-
+            <li :class="activemenu == 'vuexcrud' ? ('menu-item active'):('menu-item')">
+              <RouterLink :to="{name:'admin.vuexcrud.list'}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <div data-i18n="Vuex crud">Vuex crud</div>
+              </RouterLink>
+            </li>
 
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Others</span>
