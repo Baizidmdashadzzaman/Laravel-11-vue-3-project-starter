@@ -50,6 +50,8 @@ const router = createRouter({
   routes: [
 
 
+    {path: '/',name: 'home',component: HomeView,meta: {middleware: "front",title: `Laravel11 vue3`}},
+
 
     { path: "/admin/search/:id",component: Layout,meta: {middleware: "auth"},
     children: [{
@@ -95,17 +97,6 @@ const router = createRouter({
       ]
     },
 
-
-
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView,
-      meta: {
-        middleware: "front",
-        title: `your mosque`
-      }
-    },
     {
       path: '/admin/login',
       name: 'admin.login',
@@ -186,13 +177,13 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   document.title = sitename+' : '+to.meta.title
   window.scrollTo(0, 0);
-  if (to.meta.middleware == "guest") {
-      if (store.state.auth.authenticated) {
-          next({ name: "admin.dashboard" })
-      }
+
+  console.log(to.meta.middleware)
+  if (to.meta.middleware == "front") {
       next();
   }
-  else if (to.meta.middleware == "front") {
+  else if (to.meta.middleware == "guest") {
+    console.log('hi2');
     if (store.state.auth.authenticated) {
         next({ name: "admin.dashboard" })
     }else{
@@ -200,6 +191,7 @@ router.beforeEach((to, from, next) => {
     }
   }
   else {
+    console.log('hi3');
       if (store.state.auth.authenticated) {
           next()
       } else {
