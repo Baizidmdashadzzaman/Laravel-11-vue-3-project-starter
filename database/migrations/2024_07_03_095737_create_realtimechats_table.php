@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('realtimechats', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('image')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->bigInteger('sender_id')->nullable();
+            $table->bigInteger('receiver_id')->nullable();
+            $table->longText('message')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('realtimechats');
     }
 };

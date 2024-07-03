@@ -42,6 +42,9 @@ const vuexcrudAdd = () => import('@/views/pages/modules/vuex-crud/vuex-crud-add.
 const vuexcrudEdit = () => import('@/views/pages/modules/vuex-crud/vuex-crud-edit.vue')
 const vuexcrudList = () => import('@/views/pages/modules/vuex-crud/vuex-crud-list.vue')
 
+const realtimechat = () => import('@/views/pages/modules/realtimechat/realtimechat.vue')
+const realtimechatChat = () => import('@/views/pages/modules/realtimechat/realtimechat-chat.vue')
+
 /* Authenticated component */
 
 const sitename = import.meta.env.VITE_SITE_NAME;
@@ -93,6 +96,8 @@ const router = createRouter({
         { name: "admin.vuexcrud.list",path: '/admin/vuex-crud/list',component: vuexcrudList,meta: { title: `Vuex crud list`}},
         { name: "admin.vuexcrud.edit",path: '/admin/vuex-crud/edit/:id',component: vuexcrudEdit,meta: { title: `Vuex crud edit`}},
 
+        { name: "admin.realtimechat.list",path: '/admin/realtimechat/list',component: realtimechat,meta: { title: `Real time chat`}},
+        { name: "admin.realtimechat.chat",path: '/admin/realtimechat/chat/:id',component: realtimechatChat,meta: { title: `Real time chat`}},
 
       ]
     },

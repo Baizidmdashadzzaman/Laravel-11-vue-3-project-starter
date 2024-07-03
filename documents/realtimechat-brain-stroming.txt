@@ -1,0 +1,21 @@
+person 1 :
+->sender->p_1
+->receiver->p_2
+
+person 2 :
+->sender->p_2
+->receiver->p_1
+
+
+///for person 1
+Realtimechat::query()
+->where(function($query) use ($person_2_id)){
+   $query->where('sender_id',auth()->id())
+         ->where('receiver_id',$person_2_id);
+})
+->orWhere(function($query) use ($person_2_id)){
+   $query->where('sender_id',$person_2_id)
+         ->where('receiver_id',auth()->id());
+})
+->latest()
+->get();

@@ -137,14 +137,20 @@ watch(() => router.currentRoute.value, (to, from) => {
             </li>
             <li :class="activemenu == 'aichat' ? ('menu-item active'):('menu-item')">
               <RouterLink :to="{name:'admin.ai.chat'}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <i class="menu-icon tf-icons bx bx-message-dots"></i>
                 <div data-i18n="AI chat">AI chat</div>
               </RouterLink>
             </li>
             <li :class="activemenu == 'vuexcrud' ? ('menu-item active'):('menu-item')">
               <RouterLink :to="{name:'admin.vuexcrud.list'}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <i class="menu-icon tf-icons bx bx-table"></i>
                 <div data-i18n="Vuex crud">Vuex crud</div>
+              </RouterLink>
+            </li>
+            <li :class="activemenu == 'realtimechat' ? ('menu-item active'):('menu-item')">
+              <RouterLink :to="{name:'admin.realtimechat.list'}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-conversation"></i>
+                <div data-i18n="Realtime chat">Realtime chat</div>
               </RouterLink>
             </li>
 
