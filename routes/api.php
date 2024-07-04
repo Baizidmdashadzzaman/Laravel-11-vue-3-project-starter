@@ -2,13 +2,16 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AdminMiddleware;
 
 use App\Http\Controllers\Api\Backend\{
     Admin\Auth\AuthController,AztokenController,SettingController,ReuseableController,
     Admin\RoleController,Admin\PermissionController,Admin\AdminController,
 };
 
-use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\Api\Backend\Module\{
+    RealtimechatController,
+};
 
 
 Route::get('/user', function (Request $request) {
@@ -79,5 +82,11 @@ Route::middleware(['auth:sanctum', AdminMiddleware::class])->group(function() us
     $reusedRoutes(PermissionController::class, 'permission');
     $reusedRoutes(AztokenController::class, 'aztoken');
     $reusedRoutes(SettingController::class, 'setting');
+
+
+    Route::controller(RealtimechatController::class)->prefix('realtimechat')->group(function(){
+        Route::get('/index/{id}','index');
+        Route::post('/store', 'store');
+    });
 
 });

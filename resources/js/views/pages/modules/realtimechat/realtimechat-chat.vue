@@ -5,8 +5,12 @@ import useDataCall from "@/components/apis/datacall"
 import { useRouter, useRoute } from 'vue-router';
 import LoadingDiv from '@/components/lib/admin/layout/LoadingDiv.vue';
 import usemodelData from "@/components/apis/modelData";
+import api from "@/components/apis/api";
+import {
+  logout,userinfo,checkauth,authorized
+} from '@/components/apis/auth';
 
-const { validationErrors,urlcall,loadingBtn,getSingleData,singledata,updateData,loading,getResultAll } = useDataCall();
+const { validationErrors,urlcall,loadingBtn,getSingleData,singledata,updateData,loading,getResultAll,storeDataCustom } = useDataCall();
 const { initialStateData_aztoken, } = usemodelData();
 
 const emit = defineEmits(['changeActive'])
@@ -18,19 +22,43 @@ const backendurl = import.meta.env.VITE_BACKEND_URL;
 onMounted(() => {
   emit('changeActive', 'realtimechat')
   urlcall.value = url_data.value;
-  getSingleData(route.params.id);
+  loading.value = true;
+  get_alldata();
+  getDataCust();
+
+  Echo.private(`chat.${userinfo.id}`)
+    .listen("MessageSent", (response) => {
+        alldata_data.value.push(response.message);
+    })
 
 });
 
+let receiver = ref({});
+const get_alldata = async () => {
+    const data = await getResultAll('/admin/edit/'+route.params.id)
+    receiver.value = data.alldata;
+    loading.value = false;
+};
 
-const singledatapage = reactive({ ...initialStateData_aztoken });
+let alldata_data = ref([]);
+const getDataCust = async () => {
+    const data = await getResultAll('/realtimechat/index/'+route.params.id)
+    alldata_data.value = data.alldata;
+    loading.value = false;
+};
 
-watch(singledata, async (newdata, olddata) => {
-   for (const [key, value] of Object.entries(newdata)) {
-      singledatapage[key] = value
-   }
-})
 
+let formdata = reactive ({
+    sender_id:userinfo.id,
+    receiver_id:route.params.id,
+    message:'',
+});
+
+const sendMessage = async () => {
+    await storeDataCustom(formdata,'/realtimechat/store')
+    await getDataCust()
+    formdata.message = '';
+};
 
 
 </script>
@@ -51,12 +79,14 @@ watch(singledata, async (newdata, olddata) => {
                      <i class="bx bx-menu bx-sm cursor-pointer d-lg-none d-block me-2" data-bs-toggle="sidebar" data-overlay="" data-target="#app-chat-contacts"></i>
                      <div class="flex-shrink-0 avatar">
                         <div class="avatar me-2 avatar-online" >
-                           <span class="avatar-initial rounded-circle bg-label-primary">pi</span>
+                           <span class="avatar-initial rounded-circle bg-label-primary">
+                            {{ receiver.name?.substring(0, 2) }}
+                           </span>
                         </div>
                      </div>
                      <div class="chat-contact-info flex-grow-1 ms-3">
-                        <h6 class="m-0">Felecia Rower</h6>
-                        <small class="user-status text-muted">NextJS developer</small>
+                        <h6 class="m-0">{{ receiver.name }}</h6>
+                        <small class="user-status text-muted">{{ receiver.email }}</small>
                      </div>
                   </div>
                   <div class="d-flex align-items-center">
@@ -81,68 +111,67 @@ watch(singledata, async (newdata, olddata) => {
 
             <div class="chat-history-body ps ps--active-y">
               <perfect-scrollbar  style="height: 200px;">
-               <ul class="list-unstyled chat-history mb-0">
-                  <li class="chat-message chat-message-right">
+               <ul v-for="singledata in alldata_data" :key="singledata.id" class="list-unstyled chat-history mb-0">
+                  <li v-if="singledata.sender_id == userinfo.id" class="chat-message chat-message-right">
                      <div class="d-flex overflow-hidden">
                         <div class="chat-message-wrapper flex-grow-1">
                            <div class="chat-message-text" style="background-color: #696cff;">
-                              <p class="mb-0" >How can we help? We're here for you! 😄</p>
+                              <p class="mb-0" v-html="singledata.message"></p>
                            </div>
                            <div class="text-end text-muted mt-1">
                               <i class="bx bx-check-double text-success"></i>
-                              <small>10:00 AM</small>
+                              <small>{{ singledata.message_time }}</small>
                            </div>
                         </div>
                         <div class="user-avatar flex-shrink-0 ms-3">
                            <div class="avatar avatar-md">
                              <div class="avatar me-2 avatar-online" >
-                               <span class="avatar-initial rounded-circle bg-label-primary">pi</span>
+                               <span class="avatar-initial rounded-circle bg-label-primary">
+                                  {{ singledata.sender?.name?.substring(0, 2) }}
+                               </span>
                              </div>
                            </div>
                         </div>
                      </div>
                   </li>
-                  <li class="chat-message">
+                  <li v-else class="chat-message">
                      <div class="d-flex overflow-hidden">
                         <div class="user-avatar flex-shrink-0 me-3">
                            <div class="avatar avatar-md">
                              <div class="avatar me-2 avatar-online" >
-                               <span class="avatar-initial rounded-circle bg-label-primary">pi</span>
+                               <span class="avatar-initial rounded-circle bg-label-primary">{{ singledata.sender?.name?.substring(0, 2) }}</span>
                              </div>
                            </div>
                         </div>
                         <div class="chat-message-wrapper flex-grow-1">
                            <div class="chat-message-text">
-                              <p class="mb-0">Hey John, I am looking for the best admin template.</p>
-                              <p class="mb-0">Could you please help me to find it out? 🤔</p>
-                           </div>
-                           <div class="chat-message-text mt-2">
-                              <p class="mb-0">It should be Bootstrap 5 compatible.</p>
+                              <p class="mb-0" v-html="singledata.message"></p>
                            </div>
                            <div class="text-muted mt-1">
-                              <small>10:02 AM</small>
+                              <small>{{ singledata.message_time }}</small>
                            </div>
                         </div>
                      </div>
                   </li>
                </ul>
-            </perfect-scrollbar>
-
+              </perfect-scrollbar>
             </div>
 
             <!-- Chat message form -->
             <div class="chat-history-footer">
-               <form class="form-send-message d-flex justify-content-between align-items-center ">
-                  <input class="form-control message-input border-0 me-3 shadow-none" placeholder="Type your message here...">
+               <form @submit.prevent="sendMessage()" class="form-send-message d-flex justify-content-between align-items-center ">
+                  <input v-model="formdata.message" class="form-control message-input border-0 me-3 shadow-none" placeholder="Type your message here...">
                   <div class="message-actions d-flex align-items-center">
                      <i class="speech-to-text bx bx-microphone bx-sm cursor-pointer"></i>
                      <label for="attach-doc" class="form-label mb-0">
                      <i class="bx bx-paperclip bx-sm cursor-pointer mx-3 text-body"></i>
                      <input type="file" id="attach-doc" hidden="">
                      </label>
-                     <button class="btn btn-primary d-flex send-msg-btn">
-                     <i class="bx bx-paper-plane me-md-1 me-0"></i>
-                     <span class="align-middle d-md-inline-block d-none">Send</span>
+                     <button type="submit" class="btn btn-primary d-flex send-msg-btn">
+                        <i class="bx bx-paper-plane me-md-1 me-0"></i>
+                        <span class="align-middle d-md-inline-block d-none">
+                           {{ loadingBtn ? "Sending..." : "Send" }}
+                        </span>
                      </button>
                   </div>
                </form>

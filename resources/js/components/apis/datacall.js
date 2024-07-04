@@ -133,6 +133,26 @@ export default function useDataCall() {
         })
     };
 
+    const storeDataCustom = async (formdata,url) => {
+        validationErrors.value = '';
+        loadingBtn.value = true;
+        addingstatus.value = false;
+        const config = { headers: { 'content-type': 'multipart/form-data' }}
+        await api().post(url,formdata,config).then(({data})=>{
+            addingstatus.value = true;
+        }).catch(({response})=>{
+            if(response.status===400){
+                validationErrors.value = response.data.message;
+            }
+            if(response.status===404){
+                validationErrors.value = response.data.message;
+            }
+            addingstatus.value = false;
+        }).finally(()=>{
+            loadingBtn.value = false;
+        })
+    };
+
     const updateData = async (id,formdata) => {
         validationErrors.value = '';
         loadingBtn.value = true;
@@ -251,6 +271,7 @@ export default function useDataCall() {
         getResultAll,
         getResultsByID,
         storeData,
+        storeDataCustom,
         updateData,
         updateDataWithoutPush,
         searchResults,
